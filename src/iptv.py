@@ -163,6 +163,10 @@ class IPTVChannelExtractor:
         raw_channels = self.extract_channels()
         logging.info(f"原始频道数: {len(raw_channels)}")
 
+        if (len(raw_channels) == 0):
+            logging.error("未获取到频道数据, 退出")
+            return
+
         icons = self.load_icons()
         icons_map = self.build_icons_map(icons)
 
