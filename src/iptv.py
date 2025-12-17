@@ -21,7 +21,7 @@ from pathlib import Path
 class IPTVChannelExtractor:
     """IPTV频道信息提取器"""
 
-    def __init__(self, base_url="http://epg.51zmt.top:8001"):
+    def __init__(self, base_url="https://epg.51zmt.top:8001"):
         self.base_url = base_url
         self.session = requests.Session()
         self.session.headers.update({
