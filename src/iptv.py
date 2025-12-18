@@ -51,7 +51,7 @@ class IPTVChannelExtractor:
 
     def fetch(self, url):
         try:
-            resp = self.session.get(url, timeout=10)
+            resp = self.session.get(url, timeout=120)
             resp.raise_for_status()
             return resp.content
         except Exception as e:
