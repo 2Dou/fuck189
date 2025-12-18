@@ -121,6 +121,7 @@ class IPTVChannelExtractor:
                 'id': ch['id'],
                 'name': name,
                 'address': ch['address'],
+                'playback': ch['playback'],
                 'tag': self.categorize(name),
                 'icon': icons_map.get(name, "")
             })
