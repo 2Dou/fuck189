@@ -33,7 +33,7 @@ jobs:
 
       - name: Build iptv
         env:
-          LAN_ADDRESS: ${{ env.LAN_ADDRESS }}
+          LAN_ADDRESS: ${{ vars.LAN_ADDRESS }}
         run: |
           python3 ./src/iptv.py
 
