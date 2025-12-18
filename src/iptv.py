@@ -51,7 +51,7 @@ class IPTVChannelExtractor:
 
     def fetch(self, url):
         try:
-            resp = self.session.get(url, timeout=120)
+            resp = self.session.get(url, timeout=180)
             resp.raise_for_status()
             return resp.content
         except Exception as e:
@@ -135,7 +135,7 @@ class IPTVChannelExtractor:
         timestamp = strict_rfc3339.now_to_rfc3339_utcoffset()
         header = (
             f'#EXTM3U name="成都电信IPTV - {timestamp}" '
-            f'url-tvg="http://epg.51zmt.top:8000/e.xml,https://epg.112114.xyz/pp.xml"\n\n'
+            f'url-tvg="https://epg.51zmt.top:8001/e.xml,https://epg.112114.xyz/pp.xml"\n\n'
         )
 
         with open(output_path, 'w', encoding='utf-8') as f:
@@ -144,7 +144,9 @@ class IPTVChannelExtractor:
                 extinf = (
                     f'#EXTINF:-1 tvg-logo="{ch["icon"]}" '
                     f'tvg-id="{ch["id"]}" tvg-name="{ch["name"]}" '
-                    f'group-title="{ch["tag"]}",{ch["name"]}\n'
+                    f'group-title="{ch["tag"]}" '
+                    f'catchup="default" catchup-source="{ch["playback"]}?playseek={{utc:YmdHMS}}-{{utcend:YmdHMS}}"'
+                    f',{ch["name"]}\n'
                 )
                 f.write(extinf)
 
